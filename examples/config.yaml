@@ -1,0 +1,72 @@
+- name: local
+  hostname: michele@192.168.1.102
+  components:
+    - type: kubernetes
+      name: nginx
+      service: nginx-ingress-nginx-controller
+      port: 80
+      bridge-port: 10001
+    - type: kubernetes
+      name: whoami
+      service: whoami
+      port: 80
+      bridge-port: 10002
+- name: uat
+  hostname: ubuntu@ukuat.elerianai.com
+  components:
+    - type: docker
+      name: calm
+      service: compose-calm-1
+      port: 8000
+    - type: docker
+      service: compose-solomon-1
+      port: 8000
+    - type: docker
+      name: db
+      service: compose-postgres-1
+      port: 5432
+- name: demo
+  hostname: ubuntu@ukdemo.elerianai.com
+  components:
+    - type: docker
+      name: ses
+      service: aws-ses-middleware
+      port: 8000
+    - type: docker
+      name: im
+      service: intelligence-model-dashboard
+      port: 8080
+- name: analytics
+  hostname: terraform@signoz2.elerianai.com
+  components:
+    - type: docker
+      name: calm
+      type: docker
+      service: compose-calm-1
+      port: 8000
+    - service: compose-solomon-1
+      port: 8000
+    - name: db
+      service: compose-postgres-1
+      port: 5432
+    - name: ch
+      service: compose-clickhouse-server-1
+      port: 8123
+- name: iwyze
+  hostname: terraform@qa-elerian.iwyze.co.za
+  components:
+    - name: mw
+      service: iwyze-middleware
+      port: 8000
+    - name: mw-prod
+      service: iwyze-middleware-prod
+      port: 8000
+    - name: ui
+      service: iwyze-middleware-ui
+      port: 8000
+    - name: report
+      service: iwyze-middleware-report
+      port: 8000
+    - name: report-prod
+      service: iwyze-middleware-report-prod
+      port: 8000
