@@ -6,7 +6,7 @@ docker run -it \
     -v /home/michele/.ssh/id_rsa:/root/.ssh/id_rsa \
     -p 2345:2345 \
     -p 1234:1234 \
-    test bridger \
+    mastrogiovanni/bridger:main bridger \
         /app/config.yaml \
         uat:calm:2345 \
         uat:db:1234

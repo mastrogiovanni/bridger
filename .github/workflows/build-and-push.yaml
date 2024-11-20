@@ -5,11 +5,11 @@ name: Docker
 # separate terms of service, privacy policy, and support
 # documentation.
 
-on: ['push']
-  # push:
-  #   branches: [ $default-branch ]
-  #   # Publish semver tags as releases.
-  #   tags: [ 'v*.*.*' ]
+on:
+  push:
+    branches: [ $default-branch ]
+    # Publish semver tags as releases.
+    tags: [ 'v*.*.*' ]
   # pull_request:
   #   branches: [ $default-branch ]
 
