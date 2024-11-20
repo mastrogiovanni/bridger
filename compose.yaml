@@ -1,16 +1,18 @@
 services:
   bridger:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: mastrogiovanni/bridger:v0.0.1
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
     ports:
       - 2345:2345
+      - 2346:2346
       - 1234:1234
     command:
       - bridger
       - /app/config.yaml
-      - local:whoami:2345
-      # - uat:calm:2345
+      # - local:whoami:2345
+      - uat:calm:2346s
       # - uat:db:1234
     volumes:
       - ./config.yaml:/app/config.yaml
