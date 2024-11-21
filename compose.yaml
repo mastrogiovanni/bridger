@@ -1,21 +1,17 @@
 services:
   bridger:
     image: mastrogiovanni/bridger:v0.0.1
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - 2345:2345
-      - 2346:2346
-      - 1234:1234
+      - 9000:9000
+      - 8000:8000
     command:
       - bridger
       - /app/config.yaml
-      # - local:whoami:2345
-      - uat:calm:2346s
-      # - uat:db:1234
+      - dev:api-service:9000
     volumes:
       - ./config.yaml:/app/config.yaml
-      - /home/michele/.ssh/known_hosts:/root/.ssh/known_hosts
-      - /home/michele/.ssh/id_rsa:/root/.ssh/id_rsa
-
+      - /home/user/.ssh/known_hosts:/root/.ssh/known_hosts
+      - /home/user/.ssh/id_rsa:/root/.ssh/id_rsa
